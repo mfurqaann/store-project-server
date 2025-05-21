@@ -10,13 +10,11 @@ dotenv.config();
 const app = express();
 
 app.use(express.json());
-app.use(cookieParser())
-// app.use(cors()); // ← Tambahkan ini sebelum route
-
 app.use(cors({
-    origin: 'http://localhost:3000', // frontend kamu
-    credentials: true               // ⬅️ WAJIB agar cookie terkirim
+    origin: 'https://store-project-gilt.vercel.app/',
+    credentials: true
 }));
+app.use(cookieParser())
 app.use('/api/auth', authRoutes);
 
 app.get('/', (req, res) => {
