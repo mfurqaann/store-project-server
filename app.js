@@ -11,7 +11,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cors({
-    origin: 'https://store-project-gilt.vercel.app/',
+    origin: 'https://store-project-gilt.vercel.app',
     credentials: true
 }));
 app.use(cookieParser())
