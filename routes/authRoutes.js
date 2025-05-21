@@ -19,4 +19,15 @@ router.get('/me', protect, async (req, res) => {
 })
 
 
+router.get('/api/test-db', async (req, res) => {
+    try {
+        const [rows] = await pool.query('SELECT 1');
+        res.json({ message: 'Database connected!', rows });
+    } catch (err) {
+        console.error('DB CONNECTION ERROR:', err);
+        res.status(500).json({ message: 'Database connection failed', error: err.message });
+    }
+});
+
+
 export default router;
