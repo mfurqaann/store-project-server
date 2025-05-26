@@ -18,6 +18,16 @@ app.use(cookieParser());
 app.use(express.json());
 app.use('/api/auth', authRoutes);
 
+app.get('/api/test-db', async (req, res) => {
+    try {
+        const [rows] = await pool.query('SELECT 1');
+        res.json({ message: 'Connected to DB!', rows });
+    } catch (err) {
+        console.error('DB ERROR:', err);
+        res.status(500).json({ error: err.message });
+    }
+});
+
 console.log('DB_HOST:', process.env.DB_HOST);
 console.log('DB_PORT:', process.env.DB_PORT);
 console.log('DB_USER:', process.env.DB_USER);
