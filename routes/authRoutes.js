@@ -21,7 +21,7 @@ router.get('/me', protect, async (req, res) => {
 
 router.get('/api/test-db', async (req, res) => {
     try {
-        const [rows] = await pool.query('SELECT 1');
+        const [rows] = await db.query('SELECT 1');
         res.json({ message: 'Database connected!', rows });
     } catch (err) {
         console.error('DB CONNECTION ERROR:', err);
