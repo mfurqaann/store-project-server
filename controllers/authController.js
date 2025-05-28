@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 import { createUser, findUserByEmail } from '../models/userModel.js';
 import { generateToken } from '../utils/generateToken.js';
 
-
+dotenv.config();
 export const register = async (req, res) => {
     const { name, email, password } = req.body;
     try {
