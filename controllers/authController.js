@@ -13,7 +13,7 @@ export const register = async (req, res) => {
 
 
         const hashedPassword = await bcrypt.hash(password, 10);
-        const userId = await createUser(name, email, hashedPassword);
+        await createUser(name, email, hashedPassword);
 
         res.status(201).json({ message: 'User registered successfully!' })
     } catch (error) {
@@ -56,7 +56,7 @@ export const sendToken = (user, res, token) => {
     res.cookie('token', token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
-        sameSite: 'lax',
+        sameSite: 'None',
         maxAge: 24 * 60 * 60 * 1000
     })
 
