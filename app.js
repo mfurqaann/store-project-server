@@ -10,13 +10,7 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-    origin: ['http://localhost:3000', 'https://store-project-gilt.vercel.app'],
-    credentials: true
-}));
-
-// ✅ Handle OPTIONS request untuk preflight
-app.options('*', cors({
-    origin: ['http://localhost:3000', 'https://store-project-gilt.vercel.app'],
+    origin: 'http://localhost:3000',
     credentials: true
 }));
 
